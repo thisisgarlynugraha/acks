@@ -12,7 +12,25 @@
 
         <ul class="sidebar-menu">
             <li class="menu-header">{{ __('Master') }}</li>
-            <li class="{{ Request::routeIs('dashboard') ? 'active' : '' }}"><a class="nav-link" href="{{ route('dashboard') }}"><i class="fas fa-fire"></i> <span>{{ __('Dashboard') }}</span></a></li>
+            <li class="{{ Request::routeIs('dashboard') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('dashboard') }}">
+                    <i class="fas fa-fire"></i>
+                    <span>{{ __('Dashboard') }}</span>
+                </a>
+            </li>
+
+            <li class="menu-header">{{ __('Settings') }}</li>
+            <li class="dropdown">
+                <a href="" class="nav-link has-dropdown">
+                    <i class="fas fa-th-large"></i>
+                    <span>{{ __('Account') }}</span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="">
+                        <a class="nav-link" href="">{{ __('Student') }}</a>
+                    </li>
+                </ul>
+            </li>
         </ul>
     </aside>
 </div>
