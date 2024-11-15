@@ -27,6 +27,9 @@
                         <a href="{{ route('student.photo.create', Crypt::encrypt($data->id)) }}" class="btn btn-primary float-right mr-2">
                             <span class="fas fa-plus"></span> {{ __('Upload') }}
                         </a>
+                        <a href="{{ route('student.index') }}" class="btn btn-warning float-right mr-2">
+                            <span class="fas fa-arrow-left"></span> {{ __('Back') }}
+                        </a>
                     </div>
                 </div>
 

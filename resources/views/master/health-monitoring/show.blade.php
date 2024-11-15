@@ -21,7 +21,9 @@
                         <h4><b>{{ $title }}</b></h4>
                     </div>
                     <div class="col">
-
+                        <a href="{{ route('health-monitoring.index') }}" class="btn btn-warning float-right mr-2">
+                            <span class="fas fa-arrow-left"></span> {{ __('Back') }}
+                        </a>
                     </div>
                 </div>
 
