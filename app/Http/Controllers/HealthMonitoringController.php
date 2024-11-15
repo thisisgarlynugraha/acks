@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\HealthMonitoring;
 use App\Models\Student;
+use Carbon\Carbon;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
@@ -79,7 +80,12 @@ class HealthMonitoringController extends Controller
             $studentId = Crypt::decrypt($id);
             $data = HealthMonitoring::latest()->where('student_id', $studentId)->get();
 
-            return DataTables::of($data)->make(true);
+            return DataTables::of($data)
+                            ->addIndexColumn()->addColumn('date', function($item) {
+                                return Carbon::parse($item->datetime)->format('M d, Y');
+                            })
+                            ->rawColumns(['date'])
+                            ->make(true);
         } catch (DecryptException $decryptExcep) {
             Alert::error('Error', 'Invalid Decryption Key or Ciphertext.');
             return redirect()->route('health-monitoring.index');
