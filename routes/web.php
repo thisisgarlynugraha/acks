@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -23,4 +24,13 @@ Auth::routes();
 
 Route::group(['prefix' => 'master', 'middleware' => ['auth:web', 'verified']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    // Student
+    Route::get('/student', [StudentController::class, 'index'])->name('student.index');
+    Route::get('/student/create', [StudentController::class, 'create'])->name('student.create');
+    Route::post('/student/store', [StudentController::class, 'store'])->name('student.store');
+    Route::get('/student/{id}/edit', [StudentController::class, 'edit'])->name('student.edit');
+    Route::put('/student/update/{id}', [StudentController::class, 'update'])->name('student.update');
+    Route::delete('/student/{id}/destroy', [StudentController::class, 'destroy'])->name('student.destroy');
+    Route::get('/student/data', [StudentController::class, 'data'])->name('student.data');
 });

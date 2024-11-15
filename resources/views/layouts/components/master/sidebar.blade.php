@@ -26,8 +26,8 @@
                     <span>{{ __('Account') }}</span>
                 </a>
                 <ul class="dropdown-menu">
-                    <li class="">
-                        <a class="nav-link" href="">{{ __('Student') }}</a>
+                    <li class="{{ Request::routeIs('student.index') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('student.index') }}">{{ __('Student') }}</a>
                     </li>
                 </ul>
             </li>
