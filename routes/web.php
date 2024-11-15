@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HealthMonitoringController;
 use App\Http\Controllers\StudentController;
@@ -51,5 +52,12 @@ Route::group(['prefix' => 'master', 'middleware' => ['auth:web', 'verified']], f
         Route::get('/data', [HealthMonitoringController::class, 'data'])->name('data');
         Route::get('/{id}/show', [HealthMonitoringController::class, 'show'])->name('show');
         Route::get('/{id}/data-show', [HealthMonitoringController::class, 'dataShow'])->name('data-show');
+    });
+
+    Route::name('attendance.')->prefix('attendance')->group(function () {
+        Route::get('/', [AttendanceController::class, 'index'])->name('index');
+        Route::get('/data', [AttendanceController::class, 'data'])->name('data');
+        Route::get('/{id}/show', [AttendanceController::class, 'show'])->name('show');
+        Route::get('/{id}/data-show', [AttendanceController::class, 'dataShow'])->name('data-show');
     });
 });

@@ -20,6 +20,12 @@
             </li>
 
             <li class="menu-header">{{ __('Management Data') }}</li>
+            <li class="{{ Request::routeIs('attendance.index') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('attendance.index') }}">
+                    <i class="fas fa-users"></i>
+                    <span>{{ __('Attendance') }}</span>
+                </a>
+            </li>
             <li class="{{ Request::routeIs('health-monitoring.index') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('health-monitoring.index') }}">
                     <i class="fas fa-heart"></i>

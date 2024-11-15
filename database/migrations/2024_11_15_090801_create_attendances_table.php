@@ -12,8 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('attendances', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id');
+            $table->uuid('student_id');
+            $table->date('date');
             $table->timestamps();
+
+            $table->index('student_id')->references('id')->on('students')->onDelete('cascade');
         });
     }
 
