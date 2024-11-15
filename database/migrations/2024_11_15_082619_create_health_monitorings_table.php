@@ -20,6 +20,8 @@ return new class extends Migration
             $table->integer('temperature');
             $table->integer('spo2');
             $table->integer('heart_rate');
+            $table->string('stress_level');
+            $table->string('imt');
             $table->timestamps();
 
             $table->index('student_id')->references('id')->on('students')->onDelete('cascade');

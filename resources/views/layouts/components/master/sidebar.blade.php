@@ -19,6 +19,14 @@
                 </a>
             </li>
 
+            <li class="menu-header">{{ __('Management Data') }}</li>
+            <li class="{{ Request::routeIs('health-monitoring.index') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('health-monitoring.index') }}">
+                    <i class="fas fa-fire"></i>
+                    <span>{{ __('Health Monitoring') }}</span>
+                </a>
+            </li>
+
             <li class="menu-header">{{ __('Settings') }}</li>
             <li class="dropdown">
                 <a href="" class="nav-link has-dropdown">

@@ -17,6 +17,8 @@ class HealthMonitoring extends Model
         'height',
         'temperature',
         'spo2',
-        'heart_rate'
+        'heart_rate',
+        'stress_level',
+        'imt'
     ];
 }
