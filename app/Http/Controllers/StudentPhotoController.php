@@ -115,8 +115,6 @@ class StudentPhotoController extends Controller
     public function data(string $id)
     {
         try {
-            $title = "Student Photo - Data";
-
             $studentId = Crypt::decrypt($id);
             $data = StudentHasPhoto::latest()->where('student_id', $studentId)->get();
 
@@ -129,8 +127,6 @@ class StudentPhotoController extends Controller
                                         })
                                         ->rawColumns(['url', 'action'])
                                         ->make(true);
-
-            return view('master.student.photo.index', compact('title', 'data'));
         } catch (DecryptException $decryptExcep) {
             Alert::error('Error', 'Invalid Decryption Key or Ciphertext.');
             return redirect()->route('student.index');
