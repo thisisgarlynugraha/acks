@@ -37,6 +37,7 @@
                                     <th class="text-center">{{ __('No') }}</th>
                                     <th class="text-center">{{ __('Date') }}</th>
                                     <th class="text-center">{{ __('Time') }}</th>
+                                    <th class="text-center">{{ __('Status') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -62,6 +63,7 @@
                 }, width: '5%', class: 'text-center' },
                 { data: 'date', name: 'date'},
                 { data: 'time', name: 'time', width: '30%', class: 'text-center' },
+                { data: 'status', name: 'status', width: '30%', class: 'text-center' },
             ]
         })
     </script>

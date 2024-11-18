@@ -5,7 +5,7 @@
         </a>
     @endcan
 
-    @can('Student - Edit')
+    @can('Student - Update')
         <a href="{{ route('student.edit', Crypt::encrypt($id)) }}" class="ml-2 btn btn-warning">
             <span class="fas fa-edit"></span>
         </a>

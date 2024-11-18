@@ -87,7 +87,10 @@ class AttendanceController extends Controller
                             ->addColumn('time', function($item) {
                                 return Carbon::parse($item->datetime)->format('H:i') . ' WIB';
                             })
-                            ->rawColumns(['date', 'time'])
+                            ->addColumn('status', function($item) {
+                                return 'Hadir';
+                            })
+                            ->rawColumns(['date', 'time', 'status'])
                             ->make(true);
         } catch (DecryptException $decryptExcep) {
             Alert::error('Error', 'Invalid Decryption Key or Ciphertext.');
