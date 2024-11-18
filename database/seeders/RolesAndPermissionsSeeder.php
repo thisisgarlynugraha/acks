@@ -33,6 +33,7 @@ class RolesAndPermissionsSeeder extends Seeder
         }
 
         $Administrator = Role::create(['name' => 'administrator', 'guard_name' => 'web']);
+        $Administrator->givePermissionTo('Dashboard');
         $Administrator->givePermissionTo('Student - Read');
         $Administrator->givePermissionTo('Student - Create');
         $Administrator->givePermissionTo('Student - Update');
@@ -46,6 +47,7 @@ class RolesAndPermissionsSeeder extends Seeder
         $Administrator->givePermissionTo('Health Monitoring - Detail');
 
         $Student = Role::create(['name' => 'student', 'guard_name' => 'web']);
+        $Student->givePermissionTo('Dashboard');
         $Student->givePermissionTo('Attendance - Detail');
         $Student->givePermissionTo('Health Monitoring - Detail');
 

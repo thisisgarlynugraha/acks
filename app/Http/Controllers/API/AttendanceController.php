@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\AttendanceResource;
 use App\Models\Attendance;
 use App\Models\Student;
+use Carbon\Carbon;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -17,6 +19,11 @@ class AttendanceController extends Controller
     }
 
     public function create(Request $request)
+    {
+        //
+    }
+
+    public function store(Request $request)
     {
         try {
             $Validator = Validator::make($request->all(), [
@@ -33,18 +40,14 @@ class AttendanceController extends Controller
             if ($Student != NULL) {
                 $Attendance = Attendance::create([
                     'student_id' => $Student->id,
+                    'date' => Carbon::now(),
                 ]);
             }
 
             return new AttendanceResource(true, 'You\'ve Successfully Registered', $Attendance);
-        } catch (\Throwable $th) {
-            //throw $th;
+        } catch (Exception $excep) {
+            return new AttendanceResource(false, 'Error', $excep);
         }
-    }
-
-    public function store(Request $request)
-    {
-        //
     }
 
     public function show(string $id)

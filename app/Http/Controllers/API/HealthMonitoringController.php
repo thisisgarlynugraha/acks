@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\HealthMonitoringResource;
 use App\Models\HealthMonitoring;
 use App\Models\Student;
+use Carbon\Carbon;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -17,6 +19,11 @@ class HealthMonitoringController extends Controller
     }
 
     public function create(Request $request)
+    {
+        //
+    }
+
+    public function store(Request $request)
     {
         try {
             $Validator = Validator::make($request->all(), [
@@ -40,6 +47,7 @@ class HealthMonitoringController extends Controller
             if ($Student != NULL) {
                 $HealthMonitoring = HealthMonitoring::create([
                     'student_id' => $Student->id,
+                    'check_date' => Carbon::now(),
                     'weight' => $request->weight,
                     'height' => $request->height,
                     'temperature' => $request->temperature,
@@ -51,14 +59,9 @@ class HealthMonitoringController extends Controller
             }
 
             return new HealthMonitoringResource(true, 'You\'ve Successfully Registered', $HealthMonitoring);
-        } catch (\Throwable $th) {
-            //throw $th;
+        } catch (Exception $excep) {
+            return new HealthMonitoringResource(false, 'Error', $excep);
         }
-    }
-
-    public function store(Request $request)
-    {
-        //
     }
 
     public function show(string $id)
