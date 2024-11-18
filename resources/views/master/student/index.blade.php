@@ -24,9 +24,11 @@
                         <h4><b>{{ $title }}</b></h4>
                     </div>
                     <div class="col">
-                        <a href="{{ route('student.create') }}" class="btn btn-primary float-right mr-2">
-                            <span class="fas fa-plus"></span> {{ __('Create') }}
-                        </a>
+                        @can('Student - Create')
+                            <a href="{{ route('student.create') }}" class="btn btn-primary float-right mr-2">
+                                <span class="fas fa-plus"></span> {{ __('Create') }}
+                            </a>
+                        @endcan
                     </div>
                 </div>
 
