@@ -1,7 +1,7 @@
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <img class="d-inline-block" width="32px" height="30.61px" src="{{ asset('images/logo/acks.png') }}" alt="">
+            <img class="d-inline-block" width="32px" height="30.61px" src="{{ asset('images/logo/acks.png') }}" alt=""> <b>Alat Cek Kesehatan</b>
         </div>
         
         <div class="sidebar-brand sidebar-brand-sm">
