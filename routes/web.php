@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HealthMonitoringController;
 use App\Http\Controllers\StudentController;
@@ -27,7 +28,9 @@ Auth::routes([
     'register' => false,
 ]);
 
-Route::group(['prefix' => 'master', 'middleware' => ['auth:web', 'verified']], function () {
+Route::post('/login/post', [LoginController::class, 'handleLogin'])->name('login.post');
+
+Route::group(['prefix' => 'master', 'middleware' => ['auth:web,web_student', 'verified']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     // Student
